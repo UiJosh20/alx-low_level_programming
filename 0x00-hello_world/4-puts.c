@@ -1,4 +1,11 @@
 #include <stdio.h>
+/*
+ * main - Entry point
+ *
+ * Description: 'It print a string without using printf'
+ *
+ * Return: Always 0 (Success)
+ */
 
 int main(void)
 {
