@@ -1,14 +1,5 @@
 #include "main.h"
-
-/**
- * *create_array - creates an array of characters
- * @size: size of the character
- * @c: the character to be initialized
- *
- * Return: char
- */
-char *create_array(unsigned int size, char c)
-{#include <stdlib.h>
+#include <stdlib.h>
 
 /**
   * create_array - creates an array of chars
