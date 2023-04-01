@@ -31,6 +31,27 @@ list_t *add_node(list_t **head, const char *str)
 
 	josh_new_node->next = *head;
 	*head = josh_new_node;
+	josh_new_node->len = _strlen(str);
+
 
 	return (josh_new_node);
+}
+
+/**
+ * _strlen - Returns the lenght of a string
+ * @s: counting string
+ * Return: string lenght
+ */
+
+int _strlen(const char *s)
+{
+	int shownum = 0;
+
+	while (*s)
+	{
+		s++;
+		shownum++;
+	}
+
+	return (shownum);
 }
