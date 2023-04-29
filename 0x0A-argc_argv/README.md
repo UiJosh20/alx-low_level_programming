@@ -1,2 +1,0 @@
-arguments argc and argv
-
