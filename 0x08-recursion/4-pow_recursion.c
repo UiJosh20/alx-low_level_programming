@@ -4,7 +4,7 @@
  * _pow_recursion - returns the value of x raised to the power of y
  * @x: represents the first integer
  * @y: represents the power integer
- * return: value of x and y
+ * Return: always zero
  */
 int _pow_recursion(int x, int y)
 {
