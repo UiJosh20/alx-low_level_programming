@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+int add(int n1, int n2)
+{
+	return (n1 + n2);
+}
 /**
  * main - adds two positive number
  * @argc: argument count
@@ -9,8 +14,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int sum = 0;
-	int valid, i;
+	int sum, n1, n2;
+	int i = 1, j = 2;
 
 	if (argc == 1)
 	{
@@ -18,35 +23,10 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	valid = 1;
-	i = 1;
-	if (i < argc)
-	{
-		int j = 0;
+	n1 = atoi(argv[i]);
+	n2 = atoi(argv[j]);
 
-		if (argv[i][j] != '\0')
-		{
-			if (!isdigit(argv[i][j]))
-			{
-				valid = 0;
-			}
-			j++;
-
-		}
-		if (valid)
-		{
-			sum += atoi(argv[i]);
-		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
-		i++;
-
-	}
-
-
+	sum = add(n1, n2);
 	printf("%d\n", sum);
 	return (0);
 }
