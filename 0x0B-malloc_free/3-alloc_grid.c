@@ -35,8 +35,6 @@ int **alloc_grid(int width, int height)
 		free(grid);
 		return (NULL);
 	}
-
-
 	row = 0;
 	col = 0;
 	count = 0;
@@ -51,8 +49,5 @@ int **alloc_grid(int width, int height)
 		}
 		count++;
 	}
-
 	return (grid);
-
-
 }
