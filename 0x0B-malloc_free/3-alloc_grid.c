@@ -34,6 +34,7 @@ int **alloc_grid(int width, int height)
 		printf("Memory allocation failed\n");
 		return (NULL);
 	}
+	free(grid);
 	row = 0;
 	col = 0;
 	count = 0;
