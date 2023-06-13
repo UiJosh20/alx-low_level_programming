@@ -10,13 +10,11 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int *column;
 	int **grid;
-	int row;
-	int col;
-	int count;
+	int i;
+	int j;
 
-	if (width == 0 || height == 0)
+	if (width <= 0 || height <= 0)
 	{
 		return (NULL);
 	}
@@ -27,27 +25,23 @@ int **alloc_grid(int width, int height)
 		printf("Memory allocation failed\n");
 		return (NULL);
 	}
-
-	column = (int *)malloc(width * height * sizeof(int));
-	if (column == NULL)
+	i = 0;
+	while (i < height)
 	{
-		printf("Memory allocation failed\n");
-		return (NULL);
-	}
-	free(grid);
-	row = 0;
-	col = 0;
-	count = 0;
-	while (count < height)
-	{
-		grid[count] = column + (row * width) + col;
-		col++;
-		if (col == width)
+		grid[i] = (int *)calloc(width, sizeof(int));
+		if (grid[i] == NULL)
 		{
-			col = 0;
-			row++;
+			printf("Memory allocation failed.\n");
+			j = 0;
+			while (j < i)
+			{
+				free(grid[j]);
+				j++;
+			}
+			free(grid);
+			return (NULL);
 		}
-		count++;
+		i++;
 	}
 	return (grid);
 }
