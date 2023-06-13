@@ -25,6 +25,7 @@ int **alloc_grid(int width, int height)
 	if (grid == NULL)
 	{
 		printf("Memory allocation failed\n");
+		free(grid);
 		return (NULL);
 	}
 
