@@ -18,10 +18,10 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	i = 0;
-	while (i <= max - min)
+	i = min;
+	while (i <= max)
 	{
-		ar[i] = min + i;
+		ar[i - min] = i;
 		i++;
 	}
 	return (ar);
