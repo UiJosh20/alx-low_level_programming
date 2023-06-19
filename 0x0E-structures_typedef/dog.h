@@ -15,6 +15,14 @@ struct dog
 };
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
+
+/**
+ * struct dog_t - struct name
+ * @name: name
+ * @age: age
+ * @owner: owner
+ * Return: nothinh
+ */
 typedef struct dog_t
 {
 	char *name;
