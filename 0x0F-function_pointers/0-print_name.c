@@ -9,6 +9,13 @@
 void print_name(char *name, void (*f)(char *))
 {
 	f(name);
+}
+/**
+ * printing - print on the console
+ * @name: name of person
+ * Return: nothing
+ */
+void printing(char *name)
+{
 	printf("%s\n", name);
 }
-
