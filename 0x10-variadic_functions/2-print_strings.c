@@ -7,7 +7,7 @@
  * @n: number of strings passed
  * Return: nothing
  */
-void print_string(const char *separator, const unsigned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list args;
 	unsigned int i;
@@ -35,4 +35,5 @@ void print_string(const char *separator, const unsigned int n, ...)
 		i++;
 	}
 	va_end(args);
+	printf("\n");
 }
