@@ -13,7 +13,7 @@ void print_all(const char * const format, ...)
 	char *str;
 	int num;
 	char ch;
-	float f;
+	float d;
 
 	va_start(args, format);
 
