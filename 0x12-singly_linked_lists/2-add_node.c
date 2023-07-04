@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "list.h"
+#include "lists.h"
 /**
  * add_node - adds a new node at the beginning of a list
  * @head: pointer of struct list_t for beginning
@@ -10,29 +10,29 @@
 list_t *add_node(list_t **head, const char *str)
 {
 	unsigned int count;
-	list_t *n;
+	list_t *new;
 
 	new = malloc(sizeof(list_t));
 	if (str == NULL)
 	{
-		n->str = NULL;
-		n->len = 0;
-		n->next = *head;
+		new->str = NULL;
+		new->len = 0;
+		new->next = *head;
 	}
-	if (n == NULL)
+	if (new == NULL)
 	{
 		return (NULL);
 	}
-	n->next = *head;
-	*head = n;
-	n->str = strdup(str);
+	new->next = *head;
+	*head = new;
+	new->str = strdup(str);
 
 	count = 0;
 	while (str[count])
 	{
 		count++;
 	}
-	new-len = count;
-	return (count);
+	new->len = count;
+	return (new);
 
 }
