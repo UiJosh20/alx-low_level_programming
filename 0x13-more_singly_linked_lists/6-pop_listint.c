@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
  * pop_listint - deletes the head of a list
- * @head; pointer to the head
+ * @head: pointer to the head
  * Return: and integer
  */
 int pop_listint(listint_t **head)
