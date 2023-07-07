@@ -11,7 +11,7 @@ void print_binary(unsigned long int n)
 
 	if (n == 0)
 	{
-		printf("0");
+		_putchar('0');
 		return;
 	}
 
@@ -24,7 +24,7 @@ void print_binary(unsigned long int n)
 		}
 		if (!leading_zeros)
 		{
-			printf("%d", (n & mask) ? 1 : 0);
+			_putchar((n & mask) ? '1' : '0');
 		}
 		mask >>= 1;
 	}
