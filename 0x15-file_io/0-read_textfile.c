@@ -10,7 +10,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	char *buffer = malloc(letters + 1);
 	FILE *file = fopen(filename, "r");
 	ssize_t bytes_read = fread(buffer, sizeof(char), letters, file);
-	
+	ssize_t i;
 
 	if (file == NULL)
 	{
@@ -31,8 +31,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	buffer[bytes_read] = '\0';
-	
-	printf("%s", buffer);
+	i = 0;
+	while (i < bytes_read)
+	{
+		_putchar(buffer[i]);
+		i++;
+	}
 
 	fclose(file);
 	free(buffer);
