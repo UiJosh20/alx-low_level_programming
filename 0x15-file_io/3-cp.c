@@ -1,79 +1,53 @@
 #include "main.h"
-#define BUFFER_SIZE 1024
+#define MAXSIZE 1204
+#define SE STDERR_FILENO
 /**
- * print_error_and_exit - prints error and exits
- * @message: message to display
- * Return: void
- */
-void print_error_and_exit(const char *message)
-{
-	dprintf(STDERR_FILENO, "%s\n", message);
-	exit(EXIT_FAILURE);
-}
-/**
- * copy_file - copys file
- * @file_from: where to copied from
- * @file_to: where to be copied to
- * Return: void
- */
-void copy_file(const char *file_from, const char *file_to)
-{
-	int fd_from, fd_to;
-	ssize_t b_read, b_write;
-	char buffer[BUFFER_SIZE];
-
-	fd_from = open(file_from, O_RDONLY);
-	if (fd_from == -1)
-	{
-		print_error_and_exit("Error: Can't read from file");
-	}
-	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC,
-S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fd_to == -1)
-	{
-		close(fd_from);
-		print_error_and_exit("Error: Can't write to file");
-	}
-
-	while ((b_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
-	{
-		b_write = write(fd_to, buffer, b_read);
-		if (b_write == -1)
-		{
-			close(fd_from);
-			close(fd_to);
-			print_error_and_exit("Error: Can't write to file");
-		}
-	}
-
-	if (b_read == -1)
-	{
-		close(fd_from);
-		close(fd_to);
-		print_error_and_exit("Error: Can't read from file");
-	}
-	if (close(fd_from) == -1 || close(fd_to) == -1)
-	{
-		print_error_and_exit("Error: Can't close fd");
-	}
-}
-/**
- * main - checks the code
+ * main - main
  * @argc: argument count
  * @argv: argument vector
  * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	const char *file_from = argv[1];
-	const char *file_to = argv[2];
+	int ifo, ofo, iw, ow;
+	char buffer[MAXSIZE];
+	mode_t mode;
 
+	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	if (argc != 3)
 	{
-		print_error_and_exit("Usage: cp file_from file_to");
+		dprintf(SE, "Usage: cp file_from file_to\n"), exit(97);
 	}
+	ifo = open(argv[1], O_RDONLY);
+	if (ifo == -1)
+		dprintf(SE, "Error: Can't write to %s\n", argv[1]), exit(98);
+	ofo = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
+	if (ofo == -1)
+		dprintf(SE, "Error: Can't write to %s\n", argv[2]), exit(99);
+	do
+	{
+		iw = read(ifo, buffer, MAXSIZE);
+		if (iw == -1)
+		{
+			dprintf(SE, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		if (iw > 0)
+		{
+			ow = write(ofo, buffer, (ssize_t)iw);
+			if (ow == -1)
+			{
+				dprintf(SE, "Error: Can't write to %s\n", argv[2]);
+				exit(99);
+			}
+		}
+	} while (iw > 0);
+	iw = close(ifo);
+	if (iw == -1)
+		dprintf(SE, "Error: Can't close fd %d\n", ifo), exit(100);
+	ow = close(ofo);
+	if (ow == -1)
+		dprintf(SE, "Error: Can't close fd %d\n", ofo), exit(100);
 
-	copy_file(file_from, file_to);
-	return (EXIT_SUCCESS);
+	return (0);
 }
-
