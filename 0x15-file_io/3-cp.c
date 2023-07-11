@@ -24,8 +24,7 @@ int main(int argc, char *argv[])
 	ofo = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
 	if (ofo == -1)
 		dprintf(SE, "Error: Can't write to %s\n", argv[2]), exit(99);
-	do
-	{
+	do {
 		iw = read(ifo, buffer, MAXSIZE);
 		if (iw == -1)
 		{
