@@ -1,5 +1,5 @@
 #include "main.h"
-#define BUFFER_SIZE 1204
+#define BUFFER_SIZE 1024
 /**
  * print_error_and_exit - prints error and exits
  * @message: message to display
